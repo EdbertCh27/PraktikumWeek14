@@ -37,6 +37,7 @@ namespace Praktikum
 
         DataTable dtTopSkor = new DataTable();
         DataTable dtWorstDiscipline = new DataTable();
+        DataTable dtDGV = new DataTable();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -75,8 +76,7 @@ namespace Praktikum
             if (PosisiSekarang < dtTeamManagerStadium.Rows.Count - 1)
             {
                 PosisiSekarang++;
-                IsiDataTeamManagerStadium(PosisiSekarang);
-               
+                IsiDataTeamManagerStadium(PosisiSekarang);               
 
             }
             else
@@ -96,6 +96,14 @@ namespace Praktikum
             labelIsiNamaManager.Text = dtTeamManagerStadium.Rows[Posisi][1].ToString();
             labelIsiNamaStadium.Text = dtTeamManagerStadium.Rows[Posisi][2].ToString();          
             PosisiSekarang = Posisi;
+
+            dtDGV = new DataTable();
+            sqlQuery = "select date_format(m.match_date, \"%d/%c/%Y\") as match_date, m.match_date, 'HOME' as 'Home/Away', concat('vs ',t.team_name) as lawan, concat(m.goal_home,' - ',m.goal_away) as score from `match` m, team t, team t2 where m.team_away = t.team_id and t2.team_name = '" + labelIsiNamaTim.Text + "' and t2.team_id = m.team_home union select date_format(m.match_date, \"%d/%c/%Y\") as match_date, m.match_date, 'AWAY' as 'Home/Away', concat('vs ',t.team_name) as lawan, concat(m.goal_home,' - ',m.goal_away) as score from `match` m, team t, team t2 where m.team_away = t2.team_id and t2.team_name = '"+labelIsiNamaTim.Text+"' and t.team_id = m.team_home order by 2 desc limit 5;";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlAdapter = new MySqlDataAdapter(sqlCommand);
+            sqlAdapter.Fill(dtDGV);
+            dataGridView5Pertandingan.DataSource = dtDGV;
+            dataGridView5Pertandingan.Columns.RemoveAt(1);
 
             IsiDataTopSkor();
             IsiDataDiscipline();
@@ -131,6 +139,11 @@ namespace Praktikum
             concatDiscipline = dtWorstDiscipline.Rows[0][0].ToString() + ", " + dtWorstDiscipline.Rows[0][1].ToString() + " Yellow Card and " + dtWorstDiscipline.Rows[0][2] + " Red Card";
 
             labelIsiNamaWorstDiscipline.Text = concatDiscipline;
+        }
+
+        private void dataGridView5Pertandingan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

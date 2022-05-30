@@ -33,7 +33,7 @@ namespace Praktikum
             this.buttonPrev = new System.Windows.Forms.Button();
             this.buttonLast = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView5Pertandingan = new System.Windows.Forms.DataGridView();
             this.labelTeamName = new System.Windows.Forms.Label();
             this.labelManager = new System.Windows.Forms.Label();
             this.labelStadium = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@ namespace Praktikum
             this.labelIsiNamaStadium = new System.Windows.Forms.Label();
             this.labelIsiNamaTopSkor = new System.Windows.Forms.Label();
             this.labelIsiNamaWorstDiscipline = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5Pertandingan)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonFirst
@@ -87,15 +87,16 @@ namespace Praktikum
             this.buttonNext.UseVisualStyleBackColor = true;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
-            // dataGridView1
+            // dataGridView5Pertandingan
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(64, 254);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(677, 249);
-            this.dataGridView1.TabIndex = 4;
+            this.dataGridView5Pertandingan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5Pertandingan.Location = new System.Drawing.Point(64, 254);
+            this.dataGridView5Pertandingan.Name = "dataGridView5Pertandingan";
+            this.dataGridView5Pertandingan.RowHeadersWidth = 51;
+            this.dataGridView5Pertandingan.RowTemplate.Height = 24;
+            this.dataGridView5Pertandingan.Size = new System.Drawing.Size(677, 249);
+            this.dataGridView5Pertandingan.TabIndex = 4;
+            this.dataGridView5Pertandingan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5Pertandingan_CellContentClick);
             // 
             // labelTeamName
             // 
@@ -109,7 +110,7 @@ namespace Praktikum
             // labelManager
             // 
             this.labelManager.AutoSize = true;
-            this.labelManager.Location = new System.Drawing.Point(137, 117);
+            this.labelManager.Location = new System.Drawing.Point(158, 117);
             this.labelManager.Name = "labelManager";
             this.labelManager.Size = new System.Drawing.Size(72, 17);
             this.labelManager.TabIndex = 6;
@@ -118,7 +119,7 @@ namespace Praktikum
             // labelStadium
             // 
             this.labelStadium.AutoSize = true;
-            this.labelStadium.Location = new System.Drawing.Point(137, 149);
+            this.labelStadium.Location = new System.Drawing.Point(163, 149);
             this.labelStadium.Name = "labelStadium";
             this.labelStadium.Size = new System.Drawing.Size(67, 17);
             this.labelStadium.TabIndex = 7;
@@ -127,7 +128,7 @@ namespace Praktikum
             // labelTopScore
             // 
             this.labelTopScore.AutoSize = true;
-            this.labelTopScore.Location = new System.Drawing.Point(137, 183);
+            this.labelTopScore.Location = new System.Drawing.Point(143, 183);
             this.labelTopScore.Name = "labelTopScore";
             this.labelTopScore.Size = new System.Drawing.Size(87, 17);
             this.labelTopScore.TabIndex = 8;
@@ -138,7 +139,7 @@ namespace Praktikum
             // 
             this.labelWorstDiscipline.AutoSize = true;
             this.labelWorstDiscipline.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.labelWorstDiscipline.Location = new System.Drawing.Point(137, 210);
+            this.labelWorstDiscipline.Location = new System.Drawing.Point(113, 210);
             this.labelWorstDiscipline.Name = "labelWorstDiscipline";
             this.labelWorstDiscipline.Size = new System.Drawing.Size(117, 17);
             this.labelWorstDiscipline.TabIndex = 9;
@@ -205,7 +206,7 @@ namespace Praktikum
             this.Controls.Add(this.labelStadium);
             this.Controls.Add(this.labelManager);
             this.Controls.Add(this.labelTeamName);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView5Pertandingan);
             this.Controls.Add(this.buttonLast);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonPrev);
@@ -213,7 +214,7 @@ namespace Praktikum
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5Pertandingan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,7 +226,7 @@ namespace Praktikum
         private System.Windows.Forms.Button buttonPrev;
         private System.Windows.Forms.Button buttonLast;
         private System.Windows.Forms.Button buttonNext;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView5Pertandingan;
         private System.Windows.Forms.Label labelTeamName;
         private System.Windows.Forms.Label labelManager;
         private System.Windows.Forms.Label labelStadium;
