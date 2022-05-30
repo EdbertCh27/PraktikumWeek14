@@ -25,6 +25,7 @@ namespace Praktikum
         int PosisiSekarang;
 
         string concatTopskor;
+        string concatDiscipline;
 
         MySqlConnection sqlConnect = new MySqlConnection("server=localhost;uid=root;pwd=;database=premier_league");
         MySqlCommand sqlCommand;
@@ -95,7 +96,9 @@ namespace Praktikum
             labelIsiNamaManager.Text = dtTeamManagerStadium.Rows[Posisi][1].ToString();
             labelIsiNamaStadium.Text = dtTeamManagerStadium.Rows[Posisi][2].ToString();          
             PosisiSekarang = Posisi;
+
             IsiDataTopSkor();
+            IsiDataDiscipline();
         }
 
         public void IsiDataTopSkor()
@@ -120,10 +123,14 @@ namespace Praktikum
         public void IsiDataDiscipline()
         {
             dtWorstDiscipline = new DataTable();
-            sqlQuery = 
+            sqlQuery = "SELECT p.player_name as 'Nama Player', sum(if(dm.`type` = 'CY',1,0)) as 'Jumlah Yellow Card', sum(if(dm.`type` = 'CR',1,0)) as 'Jumlah Red Card',sum(if(dm.`type` = 'CY',1,0)) + sum(if(dm.`type` = 'CR',3,0)) as 'Total Value' FROM dmatch dm, team t, player p WHERE p.player_id = dm.player_id and p.team_id = t.team_id and t.team_name = '"+ labelIsiNamaTim.Text +"' GROUP BY 1 ORDER BY 4 DESC;";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
             sqlAdapter.Fill(dtWorstDiscipline);
+
+            concatDiscipline = dtWorstDiscipline.Rows[0][0].ToString() + ", " + dtWorstDiscipline.Rows[0][1].ToString() + " Yellow Card and " + dtWorstDiscipline.Rows[0][2] + " Red Card";
+
+            labelIsiNamaWorstDiscipline.Text = concatDiscipline;
         }
     }
 }
